@@ -1,0 +1,39 @@
+{
+    "data_version": "v4_voltage_random10_cleaned",
+    "split_name": "split_02_seed_22",
+    "seed": 22,
+    "split_type": "flight_level_random_split",
+    "train_ratio": 0.7,
+    "validation_ratio": 0.15,
+    "test_ratio": 0.15,
+    "train_rows": 708862,
+    "val_rows": 121876,
+    "test_rows": 136187,
+    "train_flights": 116,
+    "val_flights": 25,
+    "test_flights": 26,
+    "features_added": [
+        "voltage_per_cell",
+        "voltage_filtered_per_cell",
+        "voltage_per_cell_suspicious"
+    ],
+    "continuous_scaled_columns": [
+        "battery_status__cell_count",
+        "battery_status__current_a",
+        "battery_status__current_filtered_a",
+        "battery_status__discharged_mah",
+        "battery_status__remaining",
+        "battery_status__scale",
+        "battery_status__voltage_filtered_v",
+        "battery_status__voltage_v",
+        "cumulative_energy_wh",
+        "power_w",
+        "time_s",
+        "voltage_per_cell",
+        "voltage_filtered_per_cell"
+    ],
+    "binary_unscaled_columns": [
+        "voltage_per_cell_suspicious"
+    ],
+    "target_unscaled": "target_energy_next_60s_wh"
+}

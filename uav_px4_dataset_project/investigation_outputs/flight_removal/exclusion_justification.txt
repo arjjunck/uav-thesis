@@ -1,0 +1,3 @@
+Flight excluded: f53dabf1-a0fb-433e-8ba8-f09c569db684
+Reason: Sensor logging fault — cell count=0, voltage/cell=10.27V
+Evidence: 100% of rows flagged as voltage_per_cell_suspicious
