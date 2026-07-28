@@ -1,0 +1,18 @@
+[
+    "battery_status__cell_count",
+    "battery_status__current_a",
+    "battery_status__current_filtered_a",
+    "battery_status__discharged_mah",
+    "battery_status__remaining",
+    "battery_status__scale",
+    "battery_status__voltage_filtered_v",
+    "battery_status__voltage_v",
+    "cumulative_energy_wh",
+    "power_w",
+    "time_s",
+    "is_idle",
+    "power_w_rolling_std_3s",
+    "voltage_per_cell",
+    "voltage_filtered_per_cell",
+    "voltage_per_cell_suspicious"
+]
