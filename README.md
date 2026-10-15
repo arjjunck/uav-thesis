@@ -169,15 +169,27 @@ RFT was derived from energy prediction error rather than predicted directly:
 RFT error (s) = MAE (Wh) ÷ Mean active-phase power (W) × 3600
 ```
 
-Mean active-phase power varied substantially across folds (97.4 W in fold_04 to 284.8 W in fold_02), so a separate value was computed per fold.
+Mean active-phase power varied substantially across folds (97.4 W in fold_04 to 284.8 W in fold_02), so a separate value was computed per fold. Results are broken down by flight label (Normal / Abnormal / All).
 
-| Model | Baseline RFT error (s) | +Anomaly Score RFT error (s) | Change |
-|-------|----------------------|----------------------------|--------|
-| Linear Regression | — | — | ~no change |
-| Random Forest | — | — | higher (worse) |
-| XGBoost | — | — | higher (worse) |
-| LSTM | — | — | −0.2 s |
-| **BiLSTM** | **10.74** | **9.98** | **−0.76 s** |
+| Model | Label | MAE baseline (Wh) | MAE +anomaly (Wh) | ΔMAE (Wh) | RFT baseline (s) | RFT +anomaly (s) | ΔRFT (s) |
+|-------|-------|-------------------|-------------------|-----------|------------------|------------------|----------|
+| Linear Regression | Normal | 0.371 | 0.370 | 0.000 | 7.96 | 7.92 | 0.0 |
+| Linear Regression | Abnormal | 1.013 | 1.013 | 0.000 | 18.44 | 18.40 | 0.0 |
+| Linear Regression | All | 0.563 | 0.563 | 0.000 | 11.08 | 11.08 | 0.0 |
+| Random Forest | Normal | 0.422 | 0.474 | +0.052 | 10.40 | 11.34 | +0.9 |
+| Random Forest | Abnormal | 1.742 | 1.883 | +0.141 | 32.00 | 34.56 | +2.6 |
+| Random Forest | All | 0.815 | 0.892 | +0.077 | 16.72 | 18.14 | +1.4 |
+| XGBoost | Normal | 0.320 | 0.405 | +0.085 | 7.04 | 9.38 | +2.3 |
+| XGBoost | Abnormal | 1.684 | 1.661 | −0.023 | 31.28 | 31.48 | +0.2 |
+| XGBoost | All | 0.722 | 0.775 | +0.053 | 13.96 | 15.70 | +1.7 |
+| LSTM | Normal | 0.302 | 0.274 | −0.028 | 6.24 | 5.58 | −0.7 |
+| LSTM | Abnormal | 1.013 | 1.081 | +0.068 | 16.42 | 17.54 | +1.1 |
+| LSTM | All | 0.520 | 0.519 | −0.001 | 9.36 | 9.20 | −0.2 |
+| **BiLSTM** | Normal | 0.345 | 0.308 | −0.037 | 7.56 | 6.68 | −0.9 |
+| **BiLSTM** | Abnormal | 1.093 | 1.046 | −0.047 | 17.54 | 17.24 | −0.3 |
+| **BiLSTM** | **All** | **0.578** | **0.536** | **−0.042** | **10.74** | **9.98** | **−0.8** |
+
+Positive ΔRFT indicates degradation. BiLSTM was the only model to improve consistently across both normal and abnormal subgroups after the anomaly score was added.
 
 Note: RFT is a first-order linear approximation (assumes constant mean power). Ground truth remaining flight-time data were not available in the PX4 dataset, so this is an estimate only.
 
